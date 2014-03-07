@@ -1,0 +1,56 @@
+PODS:
+  - AFNetworking (2.2.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.2.0):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.2.0)
+  - AFNetworking/Security (2.2.0)
+  - AFNetworking/Serialization (2.2.0)
+  - AFNetworking/UIKit (2.2.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - BlocksKit (2.0.0):
+    - BlocksKit/All
+  - BlocksKit/All (2.0.0):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.0.0)
+  - BlocksKit/DynamicDelegate (2.0.0):
+    - libffi
+  - BlocksKit/MessageUI (2.0.0):
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.0.0):
+    - BlocksKit/DynamicDelegate
+  - Facebook-iOS-SDK (3.12.0)
+  - libffi (3.0.13)
+  - Parse (1.2.18):
+    - Facebook-iOS-SDK (~> 3.11)
+  - TestFlightSDK (3.0.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - BlocksKit
+  - Facebook-iOS-SDK
+  - Parse
+  - TestFlightSDK
+
+SPEC CHECKSUMS:
+  AFNetworking: e8cfd8f3fe3bfe19124a0cc63f4d45752d892a56
+  BlocksKit: b29ee3f28ba06a09f5c64987314ce5b75b2c3962
+  Facebook-iOS-SDK: c09f7d80db5c48170ff834bc03ebe774c49d1f5b
+  libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
+  Parse: 6dd57f2af9f89dc6facc755cec4e96f8b739b1fb
+  TestFlightSDK: 71e3e78d3a46144dbad975a4bf80a14dae6a818a
+
+COCOAPODS: 0.29.0
