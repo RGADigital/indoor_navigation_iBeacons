@@ -34,23 +34,22 @@ PODS:
     - BlocksKit/DynamicDelegate
   - Facebook-iOS-SDK (3.12.0)
   - libffi (3.0.13)
-  - Parse (1.2.18):
-    - Facebook-iOS-SDK (~> 3.11)
   - TestFlightSDK (3.0.0)
+  - Unirest (1.1.3)
 
 DEPENDENCIES:
   - AFNetworking
   - BlocksKit
   - Facebook-iOS-SDK
-  - Parse
   - TestFlightSDK
+  - Unirest (~> 1.1.2)
 
 SPEC CHECKSUMS:
   AFNetworking: e8cfd8f3fe3bfe19124a0cc63f4d45752d892a56
-  BlocksKit: b29ee3f28ba06a09f5c64987314ce5b75b2c3962
+  BlocksKit: c719258499c89fb43619abb434506a67b9e5332d
   Facebook-iOS-SDK: c09f7d80db5c48170ff834bc03ebe774c49d1f5b
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
-  Parse: 6dd57f2af9f89dc6facc755cec4e96f8b739b1fb
   TestFlightSDK: 71e3e78d3a46144dbad975a4bf80a14dae6a818a
+  Unirest: 1dfb0c47fca6b6af8d058dabe1b110567ff4cd70
 
 COCOAPODS: 0.29.0

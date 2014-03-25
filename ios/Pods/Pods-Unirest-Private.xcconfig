@@ -1,0 +1,5 @@
+#include "Pods-Unirest.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/Unirest" "${PODS_ROOT}/BuildHeaders/Unirest/HttpRequest" "${PODS_ROOT}/BuildHeaders/Unirest/HttpResponse" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/BlocksKit" "${PODS_ROOT}/Headers/Facebook-iOS-SDK" "${PODS_ROOT}/Headers/Facebook-iOS-SDK/FacebookSDK" "${PODS_ROOT}/Headers/TestFlightSDK" "${PODS_ROOT}/Headers/Unirest" "${PODS_ROOT}/Headers/Unirest/HttpRequest" "${PODS_ROOT}/Headers/Unirest/HttpResponse" "${PODS_ROOT}/Headers/libffi"
+OTHER_LDFLAGS = -ObjC
+PODS_ROOT = ${SRCROOT}

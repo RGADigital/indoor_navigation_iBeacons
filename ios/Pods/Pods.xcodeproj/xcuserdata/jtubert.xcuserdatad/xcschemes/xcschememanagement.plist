@@ -19,12 +19,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Parse.xcscheme</key>
+		<key>Pods-TestFlightSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-TestFlightSDK.xcscheme</key>
+		<key>Pods-Unirest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,37 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0BE578A535FE41BF903FFB90</key>
+		<key>1849C076F8004020A15232C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>24A9CB2E8EF64E4E91DE95C1</key>
+		<key>33C42DED5DF94E5F90B1A4FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29B3365A17C84F559793684F</key>
+		<key>60108BD2DFCB4D28A765C559</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2BDBFACC29F1471D82FF5DC7</key>
+		<key>61D4C3692B35455FAA51F4BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42809DA89E46482491425387</key>
+		<key>8DBAB37F64334F00B6D9E8EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9219DCEEE8F24EA6BEC153FD</key>
+		<key>A9E263B3AC204F95AD4A8254</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F3DBDC6AD2E0402A85C82561</key>
+		<key>CD9B5C47FA2A4443A1972691</key>
 		<dict>
 			<key>primary</key>
 			<true/>

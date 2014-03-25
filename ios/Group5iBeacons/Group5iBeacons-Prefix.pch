@@ -13,10 +13,10 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
 #import "TestFlight.h"
 #import "BlocksKit.h"
 #import "BlocksKit+UIKit.h"
 #import "FacebookSDK.h"
+#import <UNIRest.h>
 #import "RGAAppDelegate.h"
 #endif
