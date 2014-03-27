@@ -53,7 +53,7 @@
   self.nameLabel.text = user.name;
 }
 
-- (IBAction)send:(id)sender{
+- (IBAction)send:(id)sender{    
     NSDictionary* headers = @{@"accept": @"application/json"};
     NSDictionary* parameters = @{@"content": self.message.text, @"user": self.nameLabel.text};
     [[UNIRest post:^(UNISimpleRequest* request) {
@@ -72,7 +72,11 @@
         //NSString* newStr = [[NSString alloc] initWithData:rawBody encoding:NSUTF8StringEncoding];
         NSLog(@"response: %@",[dic objectForKey:@"content"]);
         
-        //self.message.text = @"";
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.message.text = @"";
+        });
+        
+        
     }];
 
 }
