@@ -53,7 +53,7 @@
   self.nameLabel.text = user.name;
 }
 
-- (IBAction)send:(id)sender{    
+- (IBAction)send:(id)sender{
     NSDictionary* headers = @{@"accept": @"application/json"};
     NSDictionary* parameters = @{@"content": self.message.text, @"user": self.nameLabel.text};
     [[UNIRest post:^(UNISimpleRequest* request) {
@@ -63,20 +63,13 @@
         [request setUsername:@"admin"];
         [request setPassword:@"admin"];
     }] asJsonAsync:^(UNIHTTPJsonResponse* response, NSError *error) {
-        // This is the asyncronous callback block
-        //NSInteger* code = [response code];
-        //NSDictionary* responseHeaders = [response headers];
         UNIJsonNode* body = [response body];
-        //NSData* rawBody = [response rawBody];
         NSDictionary* dic = [body JSONObject];
-        //NSString* newStr = [[NSString alloc] initWithData:rawBody encoding:NSUTF8StringEncoding];
         NSLog(@"response: %@",[dic objectForKey:@"content"]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.message.text = @"";
-        });
-        
-        
+        });        
     }];
 
 }
