@@ -18,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *message;
 @property (strong, nonatomic) IBOutlet UIButton *sendButton;
 
+@property (weak, nonatomic) id<FBGraphUser> currentUser;
+
 @end
 
 @implementation LoginUIViewController
@@ -49,15 +51,20 @@
 // This method will be called when the user information has been fetched
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
+    
+    self.currentUser = (id<FBGraphUser>)user;
+    
+    NSLog(@"loginViewFetchedUserInfo %@ / %@", user.id, [user name]);
+    
   self.profilePictureView.profileID = user.id;
   self.nameLabel.text = user.name;
 }
 
 - (IBAction)send:(id)sender{
     NSDictionary* headers = @{@"accept": @"application/json"};
-    NSDictionary* parameters = @{@"content": self.message.text, @"user": self.nameLabel.text};
+    NSDictionary* parameters = @{@"content": self.message.text, @"user": self.currentUser.name, @"user_id": self.currentUser.id, @"date": [[NSDate new] description]};
     [[UNIRest post:^(UNISimpleRequest* request) {
-        [request setUrl:@"http://calm-harbor-1376.herokuapp.com/messages"];
+        [request setUrl:@"http://fast-taiga-2263.herokuapp.com/messages"];
         [request setHeaders:headers];
         [request setParameters:parameters];
         [request setUsername:@"admin"];
@@ -80,14 +87,18 @@
     
     //[self postMessage:@"content 123" andUser:@"User2"];
     
+    NSLog(@"loginViewShowingLoggedInUser");
+    
     UNIUrlConnection* asyncConnection = [[UNIRest get:^(UNISimpleRequest *request) {
-        [request setUrl:@"http://calm-harbor-1376.herokuapp.com/messages"];
+        [request setUrl:@"http://fast-taiga-2263.herokuapp.com/messages"];
         [request setUsername:@"admin"];
         [request setPassword:@"admin"];
     }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
         UNIJsonNode* body = [response body];
         
         NSArray* arr = [body JSONArray];
+        
+        NSLog(@"count %i",arr.count);
         
         for (int i=0; i< arr.count; i++) {
             NSDictionary* dic = arr[i];
@@ -106,7 +117,7 @@
     NSDictionary* headers = @{@"accept": @"application/json"};
     NSDictionary* parameters = @{@"content": content, @"user": user};
     [[UNIRest post:^(UNISimpleRequest* request) {
-        [request setUrl:@"http://calm-harbor-1376.herokuapp.com/messages"];
+        [request setUrl:@"http://fast-taiga-2263.herokuapp.com/message"];
         [request setHeaders:headers];
         [request setParameters:parameters];
     }] asJsonAsync:^(UNIHTTPJsonResponse* response, NSError *error) {
