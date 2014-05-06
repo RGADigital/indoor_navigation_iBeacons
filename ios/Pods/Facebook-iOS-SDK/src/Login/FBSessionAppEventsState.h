@@ -16,7 +16,9 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const kFBAppEventIsImplicit;
+#import "FBSDKMacros.h"
+
+FBSDK_EXTERN NSString *const kFBAppEventIsImplicit;
 
 /**
  Internal class that holds all the state associated with FBAppEvents for a particular FBSession.  An
@@ -26,7 +28,7 @@ extern NSString *const kFBAppEventIsImplicit;
 
 @property (readonly, retain) NSMutableArray *accumulatedEvents;
 @property (readonly, retain) NSMutableArray *inFlightEvents;
-@property (readwrite) int numSkippedEventsDueToFullBuffer;
+@property (readwrite) NSUInteger numSkippedEventsDueToFullBuffer;
 @property (readwrite) BOOL requestInFlight;
 
 - (void)addEvent:(NSDictionary *)eventDictionary

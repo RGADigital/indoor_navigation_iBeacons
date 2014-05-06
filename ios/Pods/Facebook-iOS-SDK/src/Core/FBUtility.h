@@ -18,6 +18,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FBFetchedAppSettings.h"
+#import "FBLogger.h"
 
 @class FBRequest;
 @class FBSession;
@@ -57,7 +58,7 @@ typedef enum FBAdvertisingTrackingStatus {
 
 + (BOOL)isPublishPermission:(NSString *)permission;
 + (BOOL)areAllPermissionsReadPermissions:(NSArray *)permissions;
-+ (NSArray *)addBasicInfoPermission:(NSArray *)permissions;
++ (void)addBasicInfoPermission:(NSMutableArray *)permissions;
 + (void)fetchAppSettings:(NSString *)appID
                 callback:(void (^)(FBFetchedAppSettings *, NSError *))callback;
 // Only returns nil if no settings have been fetched; otherwise it returns the last fetched settings.
@@ -83,6 +84,9 @@ typedef enum FBAdvertisingTrackingStatus {
 + (NSString *)buildFacebookUrlWithPre:(NSString *)pre;
 + (NSString *)buildFacebookUrlWithPre:(NSString *)pre
                              withPost:(NSString *)post;
++ (NSString *)buildFacebookUrlWithPre:(NSString *)pre
+                                 post:(NSString *)post
+                              version:(NSString *)version;
 + (BOOL)isMultitaskingSupported;
 + (BOOL)isSystemAccountStoreAvailable;
 + (void)deleteFacebookCookies;
@@ -90,11 +94,11 @@ typedef enum FBAdvertisingTrackingStatus {
 
 @end
 
-#define FBConditionalLog(condition, desc, ...) \
+#define FBConditionalLog(condition, loggingBehavior, desc, ...) \
 do { \
     if (!(condition)) { \
         NSString *msg = [NSString stringWithFormat:(desc), ##__VA_ARGS__]; \
-        NSLog(@"FBConditionalLog: %@", msg); \
+        [FBLogger singleShotLogEntry:loggingBehavior logEntry:msg]; \
     } \
 } while(NO)
 

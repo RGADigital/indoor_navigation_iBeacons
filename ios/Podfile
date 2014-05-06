@@ -1,5 +1,4 @@
 pod 'Facebook-iOS-SDK'
-pod 'TestFlightSDK'
 pod 'BlocksKit'
 pod 'AFNetworking'
 pod 'Unirest', '~> 1.1.2'

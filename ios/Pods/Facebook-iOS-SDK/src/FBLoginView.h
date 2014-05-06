@@ -18,8 +18,24 @@
 
 #import "FBGraphUser.h"
 #import "FBSession.h"
+#import "FBTooltipView.h"
 
 @protocol FBLoginViewDelegate;
+
+/*!
+ @typedef
+ @abstract Indicates the desired login tooltip behavior.
+ */
+typedef NS_ENUM(NSUInteger, FBLoginViewTooltipBehavior) {
+    /*! The default behavior. The tooltip will only be displayed if
+     the app is eligible (determined by server round trip) */
+    FBLoginViewTooltipBehaviorDefault = 0,
+    /*! Force display of the tooltip (typically for UI testing) */
+    FBLoginViewTooltipBehaviorForceDisplay = 1,
+    /*! Force disable. In this case you can still exert more refined
+     control by manually constructing a `FBLoginTooltipView` instance. */
+    FBLoginViewTooltipBehaviorDisable = 2
+};
 
 /*!
  @class FBLoginView
@@ -30,6 +46,10 @@
  it will attempt to open an active session without UI if the current active session is not open.
 
  The FBLoginView instance also monitors for changes to the active session.
+
+ Please note: Since FBLoginView observes the active session, using multiple FBLoginView instances
+ in different parts of your app can result in each instance's delegates being notified of changes
+ for one event.
  */
 @interface FBLoginView : UIView
 
@@ -44,8 +64,7 @@
 
 /*!
  @abstract
- The read permissions to request if the user logs in via this view. The basic_info permission must be explicitly requested at
- first login, and is no longer inferred, (subject to an active migration.)
+ The read permissions to request if the user logs in via this view.
 
  @discussion
  Note, that if read permissions are specified, then publish permissions should not be specified.
@@ -74,9 +93,21 @@
  The login behavior for the active session if the user logs in via this view
 
  @discussion
- The default value is FBSessionLoginBehaviorUseSystemAccountIfPresent.
+ The default value is FBSessionLoginBehaviorWithFallbackToWebView.
  */
 @property (nonatomic) FBSessionLoginBehavior loginBehavior;
+
+/*!
+ @abstract
+ Gets or sets the desired tooltip behavior.
+ */
+@property (nonatomic, assign) FBLoginViewTooltipBehavior tooltipBehavior;
+
+/*!
+ @abstract
+ Gets or sets the desired tooltip color style.
+ */
+@property (nonatomic, assign) FBTooltipColorStyle tooltipColorStyle;
 
 /*!
  @abstract
@@ -140,6 +171,11 @@
  @abstract
  The `FBLoginViewDelegate` protocol defines the methods used to receive event
  notifications from `FBLoginView` objects.
+
+ @discussion
+ Please note: Since FBLoginView observes the active session, using multiple FBLoginView instances
+ in different parts of your app can result in each instance's delegates being notified of changes
+ for one event.
  */
 @protocol FBLoginViewDelegate <NSObject>
 

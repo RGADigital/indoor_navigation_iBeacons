@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
+#import "FBSDKMacros.h"
 #import "FBSettings.h"
 
-extern NSString *const FBPLISTUrlSchemeSuffixKey;
+FBSDK_EXTERN NSString *const FBPLISTUrlSchemeSuffixKey;
 
 @interface FBSettings (Internal)
 
@@ -66,5 +67,8 @@ extern NSString *const FBPLISTUrlSchemeSuffixKey;
 
  @param treatment The desired treatment
  */
-+ (void)setrestrictedTreatment:(FBRestrictedTreatment)treatment;
++ (void)setRestrictedTreatment:(FBRestrictedTreatment)treatment;
+
++ (NSString *)platformVersion;
+
 @end
