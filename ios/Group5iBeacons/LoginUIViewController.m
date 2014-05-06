@@ -56,23 +56,74 @@
     
     NSLog(@"loginViewFetchedUserInfo %@ / %@", user.id, [user name]);
     
-  self.profilePictureView.profileID = user.id;
-  self.nameLabel.text = user.name;
+    self.profilePictureView.profileID = user.id;
+    self.nameLabel.text = user.name;
+    
+    
+    UNIUrlConnection* asyncConnection = [[UNIRest get:^(UNISimpleRequest *request) {
+        [request setUrl:@"http://fast-taiga-2263.herokuapp.com/users"];
+        [request setUsername:@"admin"];
+        [request setPassword:@"admin"];
+    }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
+        UNIJsonNode* body = [response body];
+        NSArray* arr = [body JSONArray];
+        
+        BOOL exsist = NO;
+        
+        for (int i=0; i< arr.count; i++) {
+            NSDictionary* dic = arr[i];
+            if([[dic objectForKey:@"facebookId"] isEqualToString:user.id]){
+                exsist = YES;
+                break;
+            }
+        }
+        
+        if(!exsist){
+            NSDictionary* headers = @{@"accept": @"application/json"};
+            NSDictionary* parameters = @{@"facebookId": user.id, @"name": user.name, @"date": [[NSDate new] description]};
+            [[UNIRest post:^(UNISimpleRequest* request) {
+                [request setUrl:@"http://fast-taiga-2263.herokuapp.com/users"];
+                [request setHeaders:headers];
+                [request setParameters:parameters];
+                [request setUsername:@"admin"];
+                [request setPassword:@"admin"];
+            }] asJsonAsync:^(UNIHTTPJsonResponse* response, NSError *error) {
+                //UNIJsonNode* body = [response body];
+                //NSDictionary* dic = [body JSONObject];
+                //NSLog(@"response: %@",[dic objectForKey:@"content"]);
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.message.text = @"";
+                });
+            }];
+
+        }
+        
+        //NSDictionary* dic = [body JSONObject];
+        
+    }];
+
+    
+    
+    
+    
 }
+
+//fast-taiga-2263.herokuapp.com
 
 - (IBAction)send:(id)sender{
     NSDictionary* headers = @{@"accept": @"application/json"};
-    NSDictionary* parameters = @{@"content": self.message.text, @"user": self.currentUser.name, @"user_id": self.currentUser.id, @"date": [[NSDate new] description]};
+    NSDictionary* parameters = @{@"facebookId": self.currentUser.id};
     [[UNIRest post:^(UNISimpleRequest* request) {
-        [request setUrl:@"http://fast-taiga-2263.herokuapp.com/messages"];
+        [request setUrl:@"http://fast-taiga-2263.herokuapp.com/fenceentry"];
         [request setHeaders:headers];
         [request setParameters:parameters];
         [request setUsername:@"admin"];
         [request setPassword:@"admin"];
     }] asJsonAsync:^(UNIHTTPJsonResponse* response, NSError *error) {
-        UNIJsonNode* body = [response body];
-        NSDictionary* dic = [body JSONObject];
-        NSLog(@"response: %@",[dic objectForKey:@"content"]);
+        //UNIJsonNode* body = [response body];
+        //NSDictionary* dic = [body JSONObject];
+        //NSLog(@"response: %@",[dic objectForKey:@"content"]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.message.text = @"";
