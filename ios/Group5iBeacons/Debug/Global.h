@@ -8,7 +8,7 @@
 
 #define kBeaconProximityUUID @"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0"
 #define kBeaconRegionIdentifier @"com.rga.iBeacon-Geo-Demo"
-#define kWebServiceHostname @"http://radiant-basin-9738.herokuapp.com"
+#define kWebServiceHostname @"http://fast-taiga-2263.herokuapp.com"
 
 #define kDefaultFont [UIFont fontWithName:@"HelveticaNeue-Light" size:14]
 
