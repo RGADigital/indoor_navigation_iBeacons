@@ -21,6 +21,29 @@
 		1D49ADC418CA380600EBF21A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D49ADC218CA380600EBF21A /* InfoPlist.strings */; };
 		1D49ADC618CA380600EBF21A /* Group5iBeaconsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D49ADC518CA380600EBF21A /* Group5iBeaconsTests.m */; };
 		1D60141C18E1CFC100EFFB9E /* LoginUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D60141A18E1CFC100EFFB9E /* LoginUIViewController.m */; };
+		3C98AB2D191BDD8000FDE2AE /* DebugMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB00191BDD8000FDE2AE /* DebugMapViewController.m */; };
+		3C98AB2E191BDD8000FDE2AE /* DebugMapViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C98AB01191BDD8000FDE2AE /* DebugMapViewController~ipad.xib */; };
+		3C98AB2F191BDD8000FDE2AE /* EventLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB03191BDD8000FDE2AE /* EventLogViewController.m */; };
+		3C98AB30191BDD8000FDE2AE /* EventLogViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C98AB04191BDD8000FDE2AE /* EventLogViewController~ipad.xib */; };
+		3C98AB31191BDD8000FDE2AE /* EventLogViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C98AB05191BDD8000FDE2AE /* EventLogViewController~iphone.xib */; };
+		3C98AB32191BDD8000FDE2AE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB07191BDD8000FDE2AE /* MainViewController.m */; };
+		3C98AB33191BDD8000FDE2AE /* MainViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C98AB08191BDD8000FDE2AE /* MainViewController~ipad.xib */; };
+		3C98AB34191BDD8000FDE2AE /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C98AB09191BDD8000FDE2AE /* MainViewController~iphone.xib */; };
+		3C98AB35191BDD8000FDE2AE /* NSDate+Print.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB0C191BDD8000FDE2AE /* NSDate+Print.m */; };
+		3C98AB36191BDD8000FDE2AE /* UIColor+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB0E191BDD8000FDE2AE /* UIColor+Random.m */; };
+		3C98AB37191BDD8000FDE2AE /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB10191BDD8000FDE2AE /* UIView+Additions.m */; };
+		3C98AB38191BDD8000FDE2AE /* BeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB14191BDD8000FDE2AE /* BeaconManager.m */; };
+		3C98AB39191BDD8000FDE2AE /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB16191BDD8000FDE2AE /* EventManager.m */; };
+		3C98AB3A191BDD8000FDE2AE /* GeoTrilateration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB18191BDD8000FDE2AE /* GeoTrilateration.m */; };
+		3C98AB3B191BDD8000FDE2AE /* PolygonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB1A191BDD8000FDE2AE /* PolygonManager.m */; };
+		3C98AB3C191BDD8000FDE2AE /* Beacon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB1D191BDD8000FDE2AE /* Beacon.m */; };
+		3C98AB3D191BDD8000FDE2AE /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB1F191BDD8000FDE2AE /* Event.m */; };
+		3C98AB3E191BDD8000FDE2AE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB21191BDD8000FDE2AE /* Location.m */; };
+		3C98AB3F191BDD8000FDE2AE /* Polygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB23191BDD8000FDE2AE /* Polygon.m */; };
+		3C98AB40191BDD8000FDE2AE /* Transmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB25191BDD8000FDE2AE /* Transmission.m */; };
+		3C98AB41191BDD8000FDE2AE /* PinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB28191BDD8000FDE2AE /* PinView.m */; };
+		3C98AB42191BDD8000FDE2AE /* PolygonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB2A191BDD8000FDE2AE /* PolygonView.m */; };
+		3C98AB43191BDD8000FDE2AE /* RadiusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB2C191BDD8000FDE2AE /* RadiusView.m */; };
 		3C9C6A3818E483AF005A3A85 /* BeaconListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9C6A3718E483AF005A3A85 /* BeaconListener.m */; };
 		9D0921DB17734EF2A9098819 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E25A2E8C25F4F77B26DBDE0 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -57,6 +80,48 @@
 		1D60141918E1CFC100EFFB9E /* LoginUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUIViewController.h; sourceTree = "<group>"; };
 		1D60141A18E1CFC100EFFB9E /* LoginUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUIViewController.m; sourceTree = "<group>"; };
 		1E25A2E8C25F4F77B26DBDE0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C98AAFF191BDD8000FDE2AE /* DebugMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMapViewController.h; sourceTree = "<group>"; };
+		3C98AB00191BDD8000FDE2AE /* DebugMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugMapViewController.m; sourceTree = "<group>"; };
+		3C98AB01191BDD8000FDE2AE /* DebugMapViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DebugMapViewController~ipad.xib"; sourceTree = "<group>"; };
+		3C98AB02191BDD8000FDE2AE /* EventLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventLogViewController.h; sourceTree = "<group>"; };
+		3C98AB03191BDD8000FDE2AE /* EventLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLogViewController.m; sourceTree = "<group>"; };
+		3C98AB04191BDD8000FDE2AE /* EventLogViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EventLogViewController~ipad.xib"; sourceTree = "<group>"; };
+		3C98AB05191BDD8000FDE2AE /* EventLogViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EventLogViewController~iphone.xib"; sourceTree = "<group>"; };
+		3C98AB06191BDD8000FDE2AE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		3C98AB07191BDD8000FDE2AE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		3C98AB08191BDD8000FDE2AE /* MainViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~ipad.xib"; sourceTree = "<group>"; };
+		3C98AB09191BDD8000FDE2AE /* MainViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~iphone.xib"; sourceTree = "<group>"; };
+		3C98AB0B191BDD8000FDE2AE /* NSDate+Print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Print.h"; sourceTree = "<group>"; };
+		3C98AB0C191BDD8000FDE2AE /* NSDate+Print.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Print.m"; sourceTree = "<group>"; };
+		3C98AB0D191BDD8000FDE2AE /* UIColor+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Random.h"; sourceTree = "<group>"; };
+		3C98AB0E191BDD8000FDE2AE /* UIColor+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Random.m"; sourceTree = "<group>"; };
+		3C98AB0F191BDD8000FDE2AE /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		3C98AB10191BDD8000FDE2AE /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		3C98AB11191BDD8000FDE2AE /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		3C98AB13191BDD8000FDE2AE /* BeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconManager.h; sourceTree = "<group>"; };
+		3C98AB14191BDD8000FDE2AE /* BeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconManager.m; sourceTree = "<group>"; };
+		3C98AB15191BDD8000FDE2AE /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
+		3C98AB16191BDD8000FDE2AE /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManager.m; sourceTree = "<group>"; };
+		3C98AB17191BDD8000FDE2AE /* GeoTrilateration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoTrilateration.h; sourceTree = "<group>"; };
+		3C98AB18191BDD8000FDE2AE /* GeoTrilateration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoTrilateration.m; sourceTree = "<group>"; };
+		3C98AB19191BDD8000FDE2AE /* PolygonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolygonManager.h; sourceTree = "<group>"; };
+		3C98AB1A191BDD8000FDE2AE /* PolygonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolygonManager.m; sourceTree = "<group>"; };
+		3C98AB1C191BDD8000FDE2AE /* Beacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beacon.h; sourceTree = "<group>"; };
+		3C98AB1D191BDD8000FDE2AE /* Beacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beacon.m; sourceTree = "<group>"; };
+		3C98AB1E191BDD8000FDE2AE /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		3C98AB1F191BDD8000FDE2AE /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		3C98AB20191BDD8000FDE2AE /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		3C98AB21191BDD8000FDE2AE /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		3C98AB22191BDD8000FDE2AE /* Polygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Polygon.h; sourceTree = "<group>"; };
+		3C98AB23191BDD8000FDE2AE /* Polygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Polygon.m; sourceTree = "<group>"; };
+		3C98AB24191BDD8000FDE2AE /* Transmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transmission.h; sourceTree = "<group>"; };
+		3C98AB25191BDD8000FDE2AE /* Transmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transmission.m; sourceTree = "<group>"; };
+		3C98AB27191BDD8000FDE2AE /* PinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinView.h; sourceTree = "<group>"; };
+		3C98AB28191BDD8000FDE2AE /* PinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinView.m; sourceTree = "<group>"; };
+		3C98AB29191BDD8000FDE2AE /* PolygonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolygonView.h; sourceTree = "<group>"; };
+		3C98AB2A191BDD8000FDE2AE /* PolygonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolygonView.m; sourceTree = "<group>"; };
+		3C98AB2B191BDD8000FDE2AE /* RadiusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadiusView.h; sourceTree = "<group>"; };
+		3C98AB2C191BDD8000FDE2AE /* RadiusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadiusView.m; sourceTree = "<group>"; };
 		3C9C6A3618E483AF005A3A85 /* BeaconListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconListener.h; sourceTree = "<group>"; };
 		3C9C6A3718E483AF005A3A85 /* BeaconListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconListener.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +186,7 @@
 		1D49ADA018CA380600EBF21A /* Group5iBeacons */ = {
 			isa = PBXGroup;
 			children = (
+				3C98AAFD191BDD8000FDE2AE /* Debug */,
 				1D49ADA918CA380600EBF21A /* RGAAppDelegate.h */,
 				1D49ADAA18CA380600EBF21A /* RGAAppDelegate.m */,
 				1D49ADAC18CA380600EBF21A /* Main.storyboard */,
@@ -168,6 +234,95 @@
 				1D60141A18E1CFC100EFFB9E /* LoginUIViewController.m */,
 			);
 			name = login;
+			sourceTree = "<group>";
+		};
+		3C98AAFD191BDD8000FDE2AE /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				3C98AAFE191BDD8000FDE2AE /* Controllers */,
+				3C98AB1B191BDD8000FDE2AE /* Models */,
+				3C98AB12191BDD8000FDE2AE /* Managers */,
+				3C98AB26191BDD8000FDE2AE /* Views */,
+				3C98AB0A191BDD8000FDE2AE /* Extensions */,
+				3C98AB11191BDD8000FDE2AE /* Global.h */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		3C98AAFE191BDD8000FDE2AE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C98AB06191BDD8000FDE2AE /* MainViewController.h */,
+				3C98AB07191BDD8000FDE2AE /* MainViewController.m */,
+				3C98AB08191BDD8000FDE2AE /* MainViewController~ipad.xib */,
+				3C98AB09191BDD8000FDE2AE /* MainViewController~iphone.xib */,
+				3C98AAFF191BDD8000FDE2AE /* DebugMapViewController.h */,
+				3C98AB00191BDD8000FDE2AE /* DebugMapViewController.m */,
+				3C98AB01191BDD8000FDE2AE /* DebugMapViewController~ipad.xib */,
+				3C98AB02191BDD8000FDE2AE /* EventLogViewController.h */,
+				3C98AB03191BDD8000FDE2AE /* EventLogViewController.m */,
+				3C98AB04191BDD8000FDE2AE /* EventLogViewController~ipad.xib */,
+				3C98AB05191BDD8000FDE2AE /* EventLogViewController~iphone.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3C98AB0A191BDD8000FDE2AE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3C98AB0B191BDD8000FDE2AE /* NSDate+Print.h */,
+				3C98AB0C191BDD8000FDE2AE /* NSDate+Print.m */,
+				3C98AB0D191BDD8000FDE2AE /* UIColor+Random.h */,
+				3C98AB0E191BDD8000FDE2AE /* UIColor+Random.m */,
+				3C98AB0F191BDD8000FDE2AE /* UIView+Additions.h */,
+				3C98AB10191BDD8000FDE2AE /* UIView+Additions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3C98AB12191BDD8000FDE2AE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3C98AB13191BDD8000FDE2AE /* BeaconManager.h */,
+				3C98AB14191BDD8000FDE2AE /* BeaconManager.m */,
+				3C98AB15191BDD8000FDE2AE /* EventManager.h */,
+				3C98AB16191BDD8000FDE2AE /* EventManager.m */,
+				3C98AB17191BDD8000FDE2AE /* GeoTrilateration.h */,
+				3C98AB18191BDD8000FDE2AE /* GeoTrilateration.m */,
+				3C98AB19191BDD8000FDE2AE /* PolygonManager.h */,
+				3C98AB1A191BDD8000FDE2AE /* PolygonManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		3C98AB1B191BDD8000FDE2AE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3C98AB1C191BDD8000FDE2AE /* Beacon.h */,
+				3C98AB1D191BDD8000FDE2AE /* Beacon.m */,
+				3C98AB1E191BDD8000FDE2AE /* Event.h */,
+				3C98AB1F191BDD8000FDE2AE /* Event.m */,
+				3C98AB20191BDD8000FDE2AE /* Location.h */,
+				3C98AB21191BDD8000FDE2AE /* Location.m */,
+				3C98AB22191BDD8000FDE2AE /* Polygon.h */,
+				3C98AB23191BDD8000FDE2AE /* Polygon.m */,
+				3C98AB24191BDD8000FDE2AE /* Transmission.h */,
+				3C98AB25191BDD8000FDE2AE /* Transmission.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3C98AB26191BDD8000FDE2AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3C98AB27191BDD8000FDE2AE /* PinView.h */,
+				3C98AB28191BDD8000FDE2AE /* PinView.m */,
+				3C98AB29191BDD8000FDE2AE /* PolygonView.h */,
+				3C98AB2A191BDD8000FDE2AE /* PolygonView.m */,
+				3C98AB2B191BDD8000FDE2AE /* RadiusView.h */,
+				3C98AB2C191BDD8000FDE2AE /* RadiusView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3C9C6A3918E483B4005A3A85 /* beacon */ = {
@@ -226,7 +381,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RGA;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "John Tubert";
 				TargetAttributes = {
 					1D49ADB718CA380600EBF21A = {
@@ -258,9 +413,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C98AB31191BDD8000FDE2AE /* EventLogViewController~iphone.xib in Resources */,
+				3C98AB30191BDD8000FDE2AE /* EventLogViewController~ipad.xib in Resources */,
+				3C98AB2E191BDD8000FDE2AE /* DebugMapViewController~ipad.xib in Resources */,
+				3C98AB34191BDD8000FDE2AE /* MainViewController~iphone.xib in Resources */,
 				1D49ADB318CA380600EBF21A /* Images.xcassets in Resources */,
 				1D49ADA518CA380600EBF21A /* InfoPlist.strings in Resources */,
 				1D49ADAE18CA380600EBF21A /* Main.storyboard in Resources */,
+				3C98AB33191BDD8000FDE2AE /* MainViewController~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,10 +472,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C98AB3A191BDD8000FDE2AE /* GeoTrilateration.m in Sources */,
+				3C98AB35191BDD8000FDE2AE /* NSDate+Print.m in Sources */,
+				3C98AB2F191BDD8000FDE2AE /* EventLogViewController.m in Sources */,
+				3C98AB39191BDD8000FDE2AE /* EventManager.m in Sources */,
+				3C98AB43191BDD8000FDE2AE /* RadiusView.m in Sources */,
+				3C98AB3D191BDD8000FDE2AE /* Event.m in Sources */,
+				3C98AB3B191BDD8000FDE2AE /* PolygonManager.m in Sources */,
 				1D60141C18E1CFC100EFFB9E /* LoginUIViewController.m in Sources */,
+				3C98AB36191BDD8000FDE2AE /* UIColor+Random.m in Sources */,
 				3C9C6A3818E483AF005A3A85 /* BeaconListener.m in Sources */,
+				3C98AB40191BDD8000FDE2AE /* Transmission.m in Sources */,
 				1D49ADA718CA380600EBF21A /* main.m in Sources */,
+				3C98AB42191BDD8000FDE2AE /* PolygonView.m in Sources */,
+				3C98AB32191BDD8000FDE2AE /* MainViewController.m in Sources */,
 				1D49ADAB18CA380600EBF21A /* RGAAppDelegate.m in Sources */,
+				3C98AB3F191BDD8000FDE2AE /* Polygon.m in Sources */,
+				3C98AB41191BDD8000FDE2AE /* PinView.m in Sources */,
+				3C98AB38191BDD8000FDE2AE /* BeaconManager.m in Sources */,
+				3C98AB3C191BDD8000FDE2AE /* Beacon.m in Sources */,
+				3C98AB37191BDD8000FDE2AE /* UIView+Additions.m in Sources */,
+				3C98AB3E191BDD8000FDE2AE /* Location.m in Sources */,
+				3C98AB2D191BDD8000FDE2AE /* DebugMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +547,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -408,7 +585,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -468,7 +644,6 @@
 		1D49ADCD18CA380600EBF21A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Group5iBeacons.app/Group5iBeacons";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -491,7 +666,6 @@
 		1D49ADCE18CA380600EBF21A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Group5iBeacons.app/Group5iBeacons";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RGAAppDelegate : UIResponder <UIApplicationDelegate>
+#import "EventManager.h"
+
+@interface RGAAppDelegate : UIResponder <UIApplicationDelegate, EventManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

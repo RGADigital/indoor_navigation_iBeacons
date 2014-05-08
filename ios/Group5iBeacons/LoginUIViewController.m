@@ -54,11 +54,13 @@
     
     self.currentUser = (id<FBGraphUser>)user;
     
+    [[NSUserDefaults standardUserDefaults] setValue:user forKey:@"facebookId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     NSLog(@"loginViewFetchedUserInfo %@ / %@", user.id, [user name]);
     
     self.profilePictureView.profileID = user.id;
     self.nameLabel.text = user.name;
-    
     
     UNIUrlConnection* asyncConnection = [[UNIRest get:^(UNISimpleRequest *request) {
         [request setUrl:@"http://fast-taiga-2263.herokuapp.com/users"];

@@ -8,6 +8,9 @@
 
 #import "RGAAppDelegate.h"
 
+#import "Global.h"
+#import "PolygonManager.h"
+
 @implementation RGAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,8 +22,10 @@
     // You can find more information about why you need to add this line of code in our troubleshooting guide
     // https://developers.facebook.com/docs/ios/troubleshooting#objc
     [FBProfilePictureView class];
-
     
+    [[EventManager shared] startListening];
+    [[EventManager shared] addDelegate:self];
+
     return YES;
 }
 
@@ -65,6 +70,50 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)onEvent:(Event *)event
+{
+    if (event.type == kHasCoverage || event.type == kInPolygon) {
+        NSDictionary *headers = @{ @"accept": @"application/json" };
+        NSString *facebookId = [[NSUserDefaults standardUserDefaults] valueForKey:@"facebookId"];
+        NSDictionary* parameters = @{ @"facebookId": facebookId,
+                                       @"message" : [event asString] };
+
+        [[UNIRest post:^(UNISimpleRequest* request) {
+            [request setUrl:[kWebServiceHostname stringByAppendingString:@"/fenceentry"]];
+            [request setHeaders:headers];
+            [request setParameters:parameters];
+            [request setUsername:@"admin"];
+            [request setPassword:@"admin"];
+        }] asJsonAsync:^(UNIHTTPJsonResponse* response, NSError *error) {
+            if (error) {
+                NSLog(@"Error: %@", [error localizedDescription]);
+            }
+            else {
+                NSLog(@"HTTP ping sent!");
+            }
+        }];
+    }
+}
+
+- (void)setupTestData
+{
+    Polygon *polygon1 = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:0]
+                                               name:@"Refrigerator"
+                                          locations:@[[[Location alloc] initWithX:0. y:0. z:0.],
+                                                      [[Location alloc] initWithX:2. y:0. z:0.],
+                                                      [[Location alloc] initWithX:2. y:1. z:0.],
+                                                      [[Location alloc] initWithX:0. y:1. z:0.]]];
+    [[PolygonManager shared] addPolygon:polygon1];
+    
+    Polygon *polygon2 = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:0]
+                                               name:@"Table"
+                                          locations:@[[[Location alloc] initWithX:1. y:2. z:0.],
+                                                      [[Location alloc] initWithX:4. y:2. z:0.],
+                                                      [[Location alloc] initWithX:4. y:4. z:0.],
+                                                      [[Location alloc] initWithX:1. y:4. z:0.]]];
+    [[PolygonManager shared] addPolygon:polygon2];
 }
 
 @end
