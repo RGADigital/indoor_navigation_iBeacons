@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 FAll rights reserved.
 //
 
-
-
 #import "LoginUIViewController.h"
 
+#import "MainViewController.h"
+
 @interface LoginUIViewController ()
+
 @property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
@@ -30,7 +31,7 @@
     
     // Create a FBLoginView to log the user in with basic, email and likes permissions
     // You should ALWAYS ask for basic permissions (basic_info) when logging the user in
-    FBLoginView *loginView = [[FBLoginView alloc] initWithReadPermissions:@[@"basic_info", @"email", @"user_likes"]];
+    FBLoginView *loginView = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"email", @"user_likes"]];
     
     // Set this loginUIViewController to be the loginView button's delegate
     loginView.delegate = self;
@@ -46,6 +47,21 @@
     // Add the button to the view
     [self.view addSubview:loginView];
     
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(handleLongPressGesture:)];
+    longPressGestureRecognizer.minimumPressDuration = 5.0;
+    [self.view addGestureRecognizer:longPressGestureRecognizer];
+}
+
+- (void)handleLongPressGesture:(UILongPressGestureRecognizer*)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        MainViewController *mainViewController = [[MainViewController alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+        [self presentViewController:navigationController
+                           animated:YES
+                         completion:nil];
+    }
 }
 
 // This method will be called when the user information has been fetched
@@ -54,7 +70,8 @@
     
     self.currentUser = (id<FBGraphUser>)user;
     
-    [[NSUserDefaults standardUserDefaults] setValue:user forKey:@"facebookId"];
+    [[NSUserDefaults standardUserDefaults] setValue:[user objectForKey:@"id"]
+                                             forKey:@"facebookId"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     NSLog(@"loginViewFetchedUserInfo %@ / %@", user.id, [user name]);
