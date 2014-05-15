@@ -49,7 +49,7 @@
     
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                                             action:@selector(handleLongPressGesture:)];
-    longPressGestureRecognizer.minimumPressDuration = 5.0;
+    longPressGestureRecognizer.minimumPressDuration = 3.0;
     [self.view addGestureRecognizer:longPressGestureRecognizer];
 }
 
