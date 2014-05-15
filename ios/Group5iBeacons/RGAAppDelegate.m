@@ -23,6 +23,8 @@
     // https://developers.facebook.com/docs/ios/troubleshooting#objc
     [FBProfilePictureView class];
     
+    [self setupTestData];
+
     [[EventManager shared] startListening];
     [[EventManager shared] addDelegate:self];
 
@@ -74,9 +76,14 @@
 
 - (void)onEvent:(Event *)event
 {
+    NSString *facebookId = [[NSUserDefaults standardUserDefaults] valueForKey:@"facebookId"];
+    
+    if (!facebookId) {
+        return;
+    }
+    
     if (event.type == kHasCoverage || event.type == kInPolygon) {
         NSDictionary *headers = @{ @"accept": @"application/json" };
-        NSString *facebookId = [[NSUserDefaults standardUserDefaults] valueForKey:@"facebookId"];
         NSDictionary* parameters = @{ @"facebookId": facebookId,
                                        @"message" : [event asString] };
 
