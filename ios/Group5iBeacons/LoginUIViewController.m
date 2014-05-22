@@ -108,6 +108,7 @@
 
 //fast-taiga-2263.herokuapp.com
 
+
 - (IBAction)pingTapped:(id)sender
 {
     NSString *facebookId = [[NSUserDefaults standardUserDefaults] valueForKey:@"facebookId"];
@@ -115,7 +116,7 @@
     NSDictionary* headers = @{@"accept": @"application/json"};
     NSDictionary* parameters = @{@"facebookId": facebookId ? facebookId : @"Anonymous"};
     [[UNIRest post:^(UNISimpleRequest* request) {
-        [request setUrl:@"http://fast-taiga-2263.herokuapp.com/fenceentry"];
+        [request setUrl:@"http://fast-taiga-2263.herokuapp.com/ping"];
         [request setHeaders:headers];
         [request setParameters:parameters];
         [request setUsername:@"admin"];

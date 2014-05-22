@@ -21,6 +21,7 @@
 		1D49ADC418CA380600EBF21A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D49ADC218CA380600EBF21A /* InfoPlist.strings */; };
 		1D49ADC618CA380600EBF21A /* Group5iBeaconsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D49ADC518CA380600EBF21A /* Group5iBeaconsTests.m */; };
 		1D60141C18E1CFC100EFFB9E /* LoginUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D60141A18E1CFC100EFFB9E /* LoginUIViewController.m */; };
+		1D719CD8192E5D9D001E3D83 /* DebugMapViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D719CD7192E5D9D001E3D83 /* DebugMapViewController~iphone.xib */; };
 		3C98AB2D191BDD8000FDE2AE /* DebugMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB00191BDD8000FDE2AE /* DebugMapViewController.m */; };
 		3C98AB2E191BDD8000FDE2AE /* DebugMapViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C98AB01191BDD8000FDE2AE /* DebugMapViewController~ipad.xib */; };
 		3C98AB2F191BDD8000FDE2AE /* EventLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C98AB03191BDD8000FDE2AE /* EventLogViewController.m */; };
@@ -79,6 +80,7 @@
 		1D49ADC518CA380600EBF21A /* Group5iBeaconsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Group5iBeaconsTests.m; sourceTree = "<group>"; };
 		1D60141918E1CFC100EFFB9E /* LoginUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUIViewController.h; sourceTree = "<group>"; };
 		1D60141A18E1CFC100EFFB9E /* LoginUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUIViewController.m; sourceTree = "<group>"; };
+		1D719CD7192E5D9D001E3D83 /* DebugMapViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DebugMapViewController~iphone.xib"; sourceTree = "<group>"; };
 		1E25A2E8C25F4F77B26DBDE0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C98AAFF191BDD8000FDE2AE /* DebugMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMapViewController.h; sourceTree = "<group>"; };
 		3C98AB00191BDD8000FDE2AE /* DebugMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugMapViewController.m; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		3C98AAFE191BDD8000FDE2AE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1D719CD7192E5D9D001E3D83 /* DebugMapViewController~iphone.xib */,
 				3C98AB06191BDD8000FDE2AE /* MainViewController.h */,
 				3C98AB07191BDD8000FDE2AE /* MainViewController.m */,
 				3C98AB08191BDD8000FDE2AE /* MainViewController~ipad.xib */,
@@ -416,6 +419,7 @@
 				3C98AB31191BDD8000FDE2AE /* EventLogViewController~iphone.xib in Resources */,
 				3C98AB30191BDD8000FDE2AE /* EventLogViewController~ipad.xib in Resources */,
 				3C98AB2E191BDD8000FDE2AE /* DebugMapViewController~ipad.xib in Resources */,
+				1D719CD8192E5D9D001E3D83 /* DebugMapViewController~iphone.xib in Resources */,
 				3C98AB34191BDD8000FDE2AE /* MainViewController~iphone.xib in Resources */,
 				1D49ADB318CA380600EBF21A /* Images.xcassets in Resources */,
 				1D49ADA518CA380600EBF21A /* InfoPlist.strings in Resources */,
