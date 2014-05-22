@@ -219,6 +219,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:cellIdentifier];
         [cell.textLabel setFont:kDefaultFont];
+        [cell.textLabel setNumberOfLines:2];
+        [cell.textLabel setLineBreakMode:NSLineBreakByWordWrapping];
     }
 
     Transmission *transmission = [self.transmissions objectAtIndex:indexPath.row];
