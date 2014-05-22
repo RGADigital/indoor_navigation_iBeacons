@@ -14,8 +14,6 @@
 
 @interface MainViewController ()
 
-- (void)dismiss;
-
 @end
 
 @implementation MainViewController
@@ -34,14 +32,8 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Debug Menu";
+    self.title = @"G5 iBeacons Demo";
     self.items = @[ @"Debug Map", @"Event Log" ];
-    
-    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close"
-                                                                    style:UIBarButtonItemStylePlain
-                                                                   target:self
-                                                                   action:@selector(dismiss)];
-    self.navigationItem.leftBarButtonItem = closeButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,29 +70,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     if (indexPath.row == 0) {
-        if (IS_IPHONE) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not Supported"
-                                                                message:@"Debug Map is available only for iPad."
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Cancel"
-                                                      otherButtonTitles:nil];
-            [alertView show];
-        }
-        else if (IS_IPAD) {
-            [self.navigationController pushViewController:[[DebugMapViewController alloc] init]
-                                                 animated:YES];
-        }
+        [self.navigationController pushViewController:[[DebugMapViewController alloc] init]
+                                             animated:YES];
     }
     else if (indexPath.row == 1) {
         [self.navigationController pushViewController:[[EventLogViewController alloc] init]
                                              animated:YES];
     }
-}
-
-- (void)dismiss
-{
-    [self.navigationController dismissViewControllerAnimated:YES
-                                                  completion:nil];
 }
 
 @end
