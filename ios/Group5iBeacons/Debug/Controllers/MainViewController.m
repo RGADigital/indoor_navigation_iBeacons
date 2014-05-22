@@ -14,6 +14,8 @@
 
 @interface MainViewController ()
 
+- (void)dismissViewController;
+
 @end
 
 @implementation MainViewController
@@ -34,6 +36,12 @@
     
     self.title = @"G5 iBeacons Demo";
     self.items = @[ @"Debug Map", @"Event Log" ];
+    
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(dismissViewController)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,6 +85,12 @@
         [self.navigationController pushViewController:[[EventLogViewController alloc] init]
                                              animated:YES];
     }
+}
+
+- (void)dismissViewController
+{
+    [self.navigationController dismissViewControllerAnimated:YES
+                                                  completion:nil];
 }
 
 @end
