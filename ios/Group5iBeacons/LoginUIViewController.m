@@ -46,22 +46,6 @@
     
     // Add the button to the view
     [self.view addSubview:loginView];
-    
-    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                                            action:@selector(handleLongPressGesture:)];
-    longPressGestureRecognizer.minimumPressDuration = 3.0;
-    [self.view addGestureRecognizer:longPressGestureRecognizer];
-}
-
-- (void)handleLongPressGesture:(UILongPressGestureRecognizer*)sender
-{
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        MainViewController *mainViewController = [[MainViewController alloc] init];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
-        [self presentViewController:navigationController
-                           animated:YES
-                         completion:nil];
-    }
 }
 
 // This method will be called when the user information has been fetched
@@ -124,9 +108,12 @@
 
 //fast-taiga-2263.herokuapp.com
 
-- (IBAction)send:(id)sender{
+- (IBAction)pingTapped:(id)sender
+{
+    NSString *facebookId = [[NSUserDefaults standardUserDefaults] valueForKey:@"facebookId"];
+    
     NSDictionary* headers = @{@"accept": @"application/json"};
-    NSDictionary* parameters = @{@"facebookId": self.currentUser.id};
+    NSDictionary* parameters = @{@"facebookId": facebookId ? facebookId : @"Anonymous"};
     [[UNIRest post:^(UNISimpleRequest* request) {
         [request setUrl:@"http://fast-taiga-2263.herokuapp.com/fenceentry"];
         [request setHeaders:headers];
@@ -142,7 +129,15 @@
             self.message.text = @"";
         });
     }];
-    
+}
+
+- (IBAction)debugTapped:(id)sender
+{
+    MainViewController *mainViewController = [[MainViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    [self presentViewController:navigationController
+                       animated:YES
+                     completion:nil];
 }
 
 // Implement the loginViewShowingLoggedInUser: delegate method to modify your app's UI for a logged-in user experience
