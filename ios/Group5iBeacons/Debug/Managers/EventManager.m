@@ -49,14 +49,15 @@
     if (self = [super init]) {
         _delegates = [NSMutableSet set];
         
-        // Initialize sand start Location Manager
-        _locationManager = [[CLLocationManager alloc] init];
-        [_locationManager setDelegate:self];
-        
         // Set beacons Proximity UUID
         NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:kBeaconProximityUUID];
         _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:kBeaconRegionIdentifier];
         _beaconRegion.notifyEntryStateOnDisplay = YES;
+
+        // Initialize sand start Location Manager
+        _locationManager = [[CLLocationManager alloc] init];
+        [_locationManager setDelegate:self];
+        [_locationManager startMonitoringForRegion:_beaconRegion];
     }
     
     return self;
@@ -64,12 +65,12 @@
 
 - (void)startListening
 {
-    [_locationManager startMonitoringForRegion:_beaconRegion];
+    [_locationManager startRangingBeaconsInRegion:_beaconRegion];
 }
 
 - (void)stopListening
 {
-    [_locationManager stopMonitoringForRegion:_beaconRegion];
+    [_locationManager stopRangingBeaconsInRegion:_beaconRegion];
 }
 
 - (void)addDelegate:(id<EventManagerDelegate>)delegate
@@ -85,6 +86,30 @@
 - (void)performExecution:(BOOL)coverage
            transmissions:(NSArray *)transmissions
 {
+    if (!transmissions || [transmissions count] == 0) {
+        [self forwardEvent:[[Event alloc] initWithType:kNoCoverage]];
+    }
+    else {
+        CGFloat accuracy = CGFLOAT_MAX;
+
+        for (Transmission *transmission in transmissions) {
+            if (transmission.accuracy > 0) {
+                accuracy = MIN(accuracy, transmission.accuracy);
+            }
+        }
+    
+        if (accuracy <= 1.2) {
+            Polygon *polygon = [[PolygonManager shared] getPolygonByID:@(1)];
+            PolygonEvent *polygonEvent = [[PolygonEvent alloc] initWithType:kInPolygon
+                                                                    polygon:polygon];
+            [self forwardEvent:polygonEvent];
+        }
+        else {
+            [self forwardEvent:[[Event alloc] initWithType:kHasCoverage]];
+        }
+    }
+    
+    /**
     [GeoTrilateration trilaterate:transmissions
                           success:^(Location *location) {
                               if (location) {
@@ -110,6 +135,7 @@
                               }
                           }
      ];
+     **/
 }
 
 - (void)forwardEvent:(Event *)event
@@ -138,7 +164,7 @@
         [transmissions addObject:[[Transmission alloc] initWithCLBeacon:beacon]];
     }
     
-    NSLog(@"Ranging: %@", transmissions);
+//  NSLog(@"Ranging: %@", transmissions);
     
     [self performExecution:YES transmissions:transmissions];
 
@@ -155,14 +181,12 @@
 {
     if (state == CLRegionStateInside) {
         NSLog(@"Monitoring: INSIDE");
-        [_locationManager startRangingBeaconsInRegion:_beaconRegion];
-
+        [self startListening];
         [self performExecution:YES transmissions:nil];
     }
     else if (state == CLRegionStateOutside) {
         NSLog(@"Monitoring: OUTSIDE");
-        [_locationManager stopRangingBeaconsInRegion:_beaconRegion];
-
+        [self stopListening];
         [self performExecution:NO transmissions:nil];
     }
     else {

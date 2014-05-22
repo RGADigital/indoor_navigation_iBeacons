@@ -15,6 +15,7 @@
 + (instancetype)shared;
 
 - (NSSet *)allPolygons;
+- (Polygon *)getPolygonByID:(NSNumber *)pid;
 
 - (void)addPolygon:(Polygon *)polygon;
 - (void)addPolygons:(NSSet *)polygons;

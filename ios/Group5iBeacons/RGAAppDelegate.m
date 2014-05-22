@@ -67,6 +67,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[EventManager shared] startListening];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -82,7 +83,7 @@
         return;
     }
     
-    if (event.type == kHasCoverage || event.type == kInPolygon) {
+    if (event.type == kInPolygon) {
         NSDictionary *headers = @{ @"accept": @"application/json" };
         NSDictionary* parameters = @{ @"facebookId": facebookId,
                                        @"message" : [event asString] };
@@ -114,7 +115,7 @@
                                                       [[Location alloc] initWithX:0. y:2. z:0.]]];
     [[PolygonManager shared] addPolygon:polygon1];
     
-    Polygon *polygon2 = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:0]
+    Polygon *polygon2 = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:1]
                                                name:@"Counter"
                                           locations:@[[[Location alloc] initWithX:1. y:3. z:0.],
                                                       [[Location alloc] initWithX:4. y:3. z:0.],
