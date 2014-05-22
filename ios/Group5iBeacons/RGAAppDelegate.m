@@ -108,16 +108,16 @@
 {
     Polygon *polygon1 = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:0]
                                                name:@"Refrigerator"
-                                          locations:@[[[Location alloc] initWithX:0. y:0. z:0.],
-                                                      [[Location alloc] initWithX:2. y:0. z:0.],
-                                                      [[Location alloc] initWithX:2. y:1. z:0.],
-                                                      [[Location alloc] initWithX:0. y:1. z:0.]]];
+                                          locations:@[[[Location alloc] initWithX:0. y:1. z:0.],
+                                                      [[Location alloc] initWithX:1. y:1. z:0.],
+                                                      [[Location alloc] initWithX:1. y:2. z:0.],
+                                                      [[Location alloc] initWithX:0. y:2. z:0.]]];
     [[PolygonManager shared] addPolygon:polygon1];
     
     Polygon *polygon2 = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:0]
-                                               name:@"Table"
-                                          locations:@[[[Location alloc] initWithX:1. y:2. z:0.],
-                                                      [[Location alloc] initWithX:4. y:2. z:0.],
+                                               name:@"Counter"
+                                          locations:@[[[Location alloc] initWithX:1. y:3. z:0.],
+                                                      [[Location alloc] initWithX:4. y:3. z:0.],
                                                       [[Location alloc] initWithX:4. y:4. z:0.],
                                                       [[Location alloc] initWithX:1. y:4. z:0.]]];
     [[PolygonManager shared] addPolygon:polygon2];

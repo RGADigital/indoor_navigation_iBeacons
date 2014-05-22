@@ -13,28 +13,28 @@
 // TODO: replace with a registry
 + (NSArray *)allBeacons
 {
-    return @[ [BeaconManager findBeaconByMajor:5 andMinor:0],
-               [BeaconManager findBeaconByMajor:5 andMinor:1],
-                [BeaconManager findBeaconByMajor:5 andMinor:2] ];
+    return @[ [BeaconManager findBeaconByMajor:5 andMinor:2],
+              [BeaconManager findBeaconByMajor:1 andMinor:838],
+              [BeaconManager findBeaconByMajor:1 andMinor:1027] ];
 }
 
 + (Beacon *)findBeaconByMajor:(NSUInteger)major
                      andMinor:(NSUInteger)minor
 {
-    if (minor == 0) { // beacon1 (iPhone NJ)
+    if (major == 1 && minor == 1027) {
         return [[Beacon alloc] initWithMajor:major
                                        minor:minor
-                                    location:[[Location alloc] initWithX:0 y:4 z:0]];
+                                    location:[[Location alloc] initWithX:2 y:0 z:0]];
     }
-    else if (minor == 1) { // beacon2 (iPhone PWC2)
+    else if (major == 1 && minor == 838) {
         return [[Beacon alloc] initWithMajor:major
                                        minor:minor
                                     location:[[Location alloc] initWithX:4 y:0 z:0]];
     }
-    else if (minor == 2) { // beacon3 (USB iBeacon)
+    else if (major == 5 && minor == 2) {
         return [[Beacon alloc] initWithMajor:major
                                        minor:minor
-                                    location:[[Location alloc] initWithX:0 y:0 z:0]];
+                                    location:[[Location alloc] initWithX:0 y:3 z:0]];
     }
     else {
         return nil;
