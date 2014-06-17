@@ -91,7 +91,7 @@
                                         @"exit": event.type == kExitPolygon ? @"true" : @"false"};
 
         [[UNIRest post:^(UNISimpleRequest* request) {
-            [request setUrl:[kWebServiceHostname stringByAppendingString:@"/fenceentry"]];
+            [request setUrl:[kWebServiceHostname stringByAppendingString:@"/ping"]];
             [request setHeaders:headers];
             [request setParameters:parameters];
             [request setUsername:@"admin"];
