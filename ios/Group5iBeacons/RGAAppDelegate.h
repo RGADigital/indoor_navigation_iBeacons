@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 #import "EventManager.h"
 
 @interface RGAAppDelegate : UIResponder <UIApplicationDelegate, EventManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) id<FBGraphUser> user;
+
++ (RGAAppDelegate*)shared;
 
 @end

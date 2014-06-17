@@ -11,13 +11,16 @@
 #import "Global.h"
 #import "PolygonManager.h"
 
+@interface RGAAppDelegate ()
+
+- (void)setupTestData;
+
+@end
+
 @implementation RGAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // TestFlight
-    //[TestFlight takeOff:@"<id>"];
-    
     // Load the FBProfilePictureView
     // You can find more information about why you need to add this line of code in our troubleshooting guide
     // https://developers.facebook.com/docs/ios/troubleshooting#objc
@@ -77,16 +80,15 @@
 
 - (void)onEvent:(Event *)event
 {
-    NSString *facebookId = [[NSUserDefaults standardUserDefaults] valueForKey:@"facebookId"];
-    
-    if (!facebookId) {
+    if (!self.user) {
         return;
     }
-    
-    if (event.type == kInPolygon) {
+
+    if (event.type == kEnterPolygon || event.type == kExitPolygon) {
         NSDictionary *headers = @{ @"accept": @"application/json" };
-        NSDictionary* parameters = @{ @"facebookId": facebookId,
-                                       @"message" : [event asString] };
+        NSDictionary* parameters = @{ @"facebookId": self.user.id,
+                                       @"message": [event asString],
+                                        @"exit": event.type == kExitPolygon ? @"true" : @"false"};
 
         [[UNIRest post:^(UNISimpleRequest* request) {
             [request setUrl:[kWebServiceHostname stringByAppendingString:@"/fenceentry"]];
@@ -99,29 +101,26 @@
                 NSLog(@"Error: %@", [error localizedDescription]);
             }
             else {
-                NSLog(@"HTTP ping sent!");
+                NSLog(@"HTTP ping sent (%@)", [event asString]);
             }
         }];
     }
 }
 
++ (RGAAppDelegate *)shared
+{
+    return (RGAAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 - (void)setupTestData
 {
-    Polygon *polygon1 = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:0]
-                                               name:@"Refrigerator"
-                                          locations:@[[[Location alloc] initWithX:0. y:1. z:0.],
-                                                      [[Location alloc] initWithX:1. y:1. z:0.],
-                                                      [[Location alloc] initWithX:1. y:2. z:0.],
-                                                      [[Location alloc] initWithX:0. y:2. z:0.]]];
-    [[PolygonManager shared] addPolygon:polygon1];
-    
-    Polygon *polygon2 = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:1]
-                                               name:@"Counter"
-                                          locations:@[[[Location alloc] initWithX:1. y:3. z:0.],
-                                                      [[Location alloc] initWithX:4. y:3. z:0.],
-                                                      [[Location alloc] initWithX:4. y:4. z:0.],
-                                                      [[Location alloc] initWithX:1. y:4. z:0.]]];
-    [[PolygonManager shared] addPolygon:polygon2];
+    Polygon *stagePolygon = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:0]
+                                               name:@"Stage"
+                                          locations:@[[[Location alloc] initWithX:1.5 y:4 z:0.],
+                                                      [[Location alloc] initWithX:1.5 y:6.0 z:0.],
+                                                      [[Location alloc] initWithX:4.5 y:6.0 z:0.],
+                                                      [[Location alloc] initWithX:4.5 y:4 z:0.]]];
+    [[PolygonManager shared] addPolygon:stagePolygon];
 }
 
 @end

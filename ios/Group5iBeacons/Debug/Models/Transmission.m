@@ -29,12 +29,24 @@
     return self;
 }
 
-- (instancetype)initWithCLBeacon:(CLBeacon *)beacon
++ (instancetype)transmissionWithCLBeacon:(CLBeacon *)CLBeacon
 {
-    return [self initWithBeacon:[BeaconManager cast:beacon]
-                      timestamp:[NSDate date]
-                           rssi:beacon.rssi
-                       accuracy:beacon.accuracy];
+    if (CLBeacon.rssi == 0 && CLBeacon.accuracy == 0) {
+        return nil;
+    }
+    else {
+        Beacon *beacon = [BeaconManager findBeaconByCLBeacon:CLBeacon];
+    
+        if (!beacon) {
+            return nil;
+        }
+        else {
+            return [[Transmission alloc] initWithBeacon:beacon
+                                              timestamp:[NSDate date]
+                                                   rssi:CLBeacon.rssi
+                                               accuracy:CLBeacon.accuracy];
+        }
+    }
 }
 
 - (NSString *)description

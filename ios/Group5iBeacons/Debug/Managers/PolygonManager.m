@@ -2,7 +2,7 @@
 //  PolygonManager.m
 //  iBeacon-Geo-Demo
 //
-//  Created by admin on 4/28/14.
+//  Created by Nemanja Joksovic on 4/28/14.
 //  Copyright (c) 2014 R/GA. All rights reserved.
 //
 

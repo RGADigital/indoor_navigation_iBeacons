@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "EventManager.h"
-#import "GeoTrilateration.h"
 
 @interface DebugMapViewController : UIViewController <EventManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -18,7 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
 @property (weak, nonatomic) IBOutlet UIView *transmissionMapView;
 @property (weak, nonatomic) IBOutlet UIView *radiusHostView;
-@property (weak, nonatomic) IBOutlet UIView *currentPositionView;
+@property (weak, nonatomic) IBOutlet UIView *currentGreenPositionView;
+@property (weak, nonatomic) IBOutlet UIView *currentRedPositionView;
 @property (weak, nonatomic) IBOutlet UITableView *transimissionTableView;
 
 @end

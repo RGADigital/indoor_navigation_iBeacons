@@ -23,15 +23,7 @@
 
 - (NSString *)asString
 {
-    if (self.type == kNoCoverage) {
-        return @"No Coverage";
-    }
-    else if (self.type == kHasCoverage) {
-        return @"Has Coverage";
-    }
-    else {
-        return @"Unknown";
-    }
+    return @"Unknown";
 }
 
 - (BOOL)isEqual:(id)other
@@ -76,8 +68,11 @@
 
 - (NSString *)asString
 {
-    if (self.type == kInPolygon) {
-        return [@"Inside Polygon: " stringByAppendingString:_polygon.name];
+    if (self.type == kEnterPolygon) {
+        return [@"Enter Polygon: " stringByAppendingString:_polygon.name];
+    }
+    else if (self.type == kExitPolygon) {
+        return [@"Exit Polygon: " stringByAppendingString:_polygon.name];
     }
     else {
         return [super asString];

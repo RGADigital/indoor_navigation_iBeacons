@@ -23,6 +23,6 @@
                           rssi:(NSInteger)rssi
                       accuracy:(CGFloat)accuracy;
 
-- (instancetype)initWithCLBeacon:(CLBeacon *)beacon;
++ (instancetype)transmissionWithCLBeacon:(CLBeacon *)CLBeacon;
 
 @end

@@ -17,6 +17,8 @@
 #import "RadiusView.h"
 #import "PolygonView.h"
 #import "UIView+Additions.h"
+#import "NonLinear.h"
+#import "Trilateration.h"
 
 #define kCurrentPinEdge 20
 
@@ -126,9 +128,13 @@
         [self.radiusHostView addSubview:radiusView];
     }
     
-    [self.currentPositionView setHidden:YES];
-    [self.currentPositionView.layer setMasksToBounds:YES];
-    [self.currentPositionView.layer setCornerRadius:10];
+    [self.currentRedPositionView setHidden:YES];
+    [self.currentRedPositionView.layer setMasksToBounds:YES];
+    [self.currentRedPositionView.layer setCornerRadius:10];
+
+    [self.currentGreenPositionView setHidden:YES];
+    [self.currentGreenPositionView.layer setMasksToBounds:YES];
+    [self.currentGreenPositionView.layer setCornerRadius:10];
 }
 
 - (CGRect)calculatePinRect:(Location *)location
@@ -172,25 +178,42 @@
 
 - (void)onTransmissions:(NSArray *)transmissions
 {
-    // Perform trilateration
-    [GeoTrilateration trilaterate:transmissions
-                          success:^(Location *location) {
-                              [self.positionLabel setText:[NSString stringWithFormat:@"X: %.1f, Y: %.1f",
-                                                           location.x, location.y]];
+    Location *nl = [NonLinear determine:transmissions];
+
+    [Trilateration trilaterate:transmissions
+                       success:^(Location *location) {
+                           [self.positionLabel setText:[NSString stringWithFormat:@"TR (%.1f, %.1f), NL (%.1f, %.1f)",
+                                                            location.x, location.y, nl.x, nl.y ]];
                               
-                              [UIView animateWithDuration:0.7
-                                               animations:^{
-                                                   [self.currentPositionView setHidden:NO];
-                                                   [self.currentPositionView setFrame:[self calculatePinRect:location]];
-                                               }
+                           [UIView animateWithDuration:0.7
+                                            animations:^{
+                                                [self.currentRedPositionView setHidden:NO];
+                                                [self.currentRedPositionView setFrame:[self calculatePinRect:location]];
+                                                   
+                                                if (nl) {
+                                                    [self.currentGreenPositionView setHidden:NO];
+                                                    [self.currentGreenPositionView setFrame:[self calculatePinRect:nl]];
+                                                }
+                                                else {
+                                                    [self.currentGreenPositionView setHidden:YES];
+                                                }
+                                            }
                                ];
                           }
-                          failure:^(NSError *error) {
-                              [self.positionLabel setText:[error localizedDescription]];
-                              [self.currentPositionView setHidden:YES];
-                          }
-     ];
-    
+                       failure:^(NSError *error) {
+                           [self.positionLabel setText:[NSString stringWithFormat:@"TR (N/A), NL (%.1f, %.1f)", nl.x, nl.y]];
+                           [self.currentRedPositionView setHidden:YES];
+                           
+                           if (nl) {
+                                [self.currentGreenPositionView setHidden:NO];
+                                [self.currentGreenPositionView setFrame:[self calculatePinRect:nl]];
+                            }
+                            else {
+                                [self.currentGreenPositionView setHidden:YES];
+                            }
+                       }
+        ];
+
     // Reload debug table
     self.transmissions = transmissions;
     [self.transimissionTableView reloadData];

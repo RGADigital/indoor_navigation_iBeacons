@@ -13,7 +13,7 @@
 @implementation Beacon
 
 - (instancetype)initWithMajor:(NSUInteger)major
-                        minor:(CGFloat)minor
+                        minor:(NSUInteger)minor
                      location:(Location *)location
 {
     if (self = [super init]) {

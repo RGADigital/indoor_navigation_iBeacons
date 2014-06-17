@@ -13,38 +13,49 @@
 // TODO: replace with a registry
 + (NSArray *)allBeacons
 {
-    return @[ [BeaconManager findBeaconByMajor:5 andMinor:2],
-              [BeaconManager findBeaconByMajor:1 andMinor:838],
-              [BeaconManager findBeaconByMajor:1 andMinor:1027] ];
+    return @[ [BeaconManager findBeaconByMajor:5 andMinor:1],
+              [BeaconManager findBeaconByMajor:5 andMinor:2],
+              [BeaconManager findBeaconByMajor:5 andMinor:3],
+              [BeaconManager findBeaconByMajor:5 andMinor:4] ];
 }
 
 + (Beacon *)findBeaconByMajor:(NSUInteger)major
                      andMinor:(NSUInteger)minor
 {
-    if (major == 1 && minor == 1027) {
+    if (major == 5 && minor == 1) {
         return [[Beacon alloc] initWithMajor:major
                                        minor:minor
-                                    location:[[Location alloc] initWithX:2 y:0 z:0]];
-    }
-    else if (major == 1 && minor == 838) {
-        return [[Beacon alloc] initWithMajor:major
-                                       minor:minor
-                                    location:[[Location alloc] initWithX:4 y:0 z:0]];
+                                    location:[[Location alloc] initWithX:0 y:0 z:0]];
     }
     else if (major == 5 && minor == 2) {
         return [[Beacon alloc] initWithMajor:major
                                        minor:minor
-                                    location:[[Location alloc] initWithX:0 y:3 z:0]];
+                                    location:[[Location alloc] initWithX:6 y:0 z:0]];
+    }
+    else if (major == 5 && minor == 3) {
+        return [[Beacon alloc] initWithMajor:major
+                                       minor:minor
+                                    location:[[Location alloc] initWithX:0 y:6 z:0]];
+    }
+    else if (major == 5 && minor == 4) {
+        return [[Beacon alloc] initWithMajor:major
+                                       minor:minor
+                                    location:[[Location alloc] initWithX:6 y:6 z:0]];
     }
     else {
         return nil;
     }
 }
 
-+ (Beacon *)cast:(CLBeacon *)beacon
++ (Beacon *)findBeaconByCLBeacon:(CLBeacon *)beacon
 {
-    return [self findBeaconByMajor:[beacon.major integerValue]
-                          andMinor:[beacon.minor integerValue]];
+    if (!beacon.major || !beacon.minor) {
+        return nil;
+    }
+    else {
+        return [self findBeaconByMajor:[beacon.major integerValue]
+                              andMinor:[beacon.minor integerValue]];
+    }
 
 }
 

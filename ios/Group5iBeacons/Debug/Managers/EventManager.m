@@ -1,5 +1,5 @@
 //
-//  EventManager.m
+    //  EventManager.m
 //  iBeacon-Geo-Demo
 //
 //  Created by Nemanja Joksovic on 4/26/14.
@@ -14,7 +14,7 @@
 
 #import "Global.h"
 #import "PolygonManager.h"
-#import "GeoTrilateration.h"
+#import "LocationManager.h"
 
 @interface EventManager ()
 
@@ -87,62 +87,44 @@
            transmissions:(NSArray *)transmissions
 {
     if (!transmissions || [transmissions count] == 0) {
-        [self forwardEvent:[[Event alloc] initWithType:kNoCoverage]];
+        [self forwardEvent:[[Event alloc] initWithType:kUnknown]];
     }
     else {
-        CGFloat accuracy = CGFLOAT_MAX;
+        [LocationManager determine:transmissions
+                           success:^(Location *location) {
+                               if (location) {
+                                   NSSet *polygons = [[PolygonManager shared] allPolygons];
 
-        for (Transmission *transmission in transmissions) {
-            if (transmission.accuracy > 0) {
-                accuracy = MIN(accuracy, transmission.accuracy);
-            }
-        }
-    
-        if (accuracy <= 1.2) {
-            Polygon *polygon = [[PolygonManager shared] getPolygonByID:@(1)];
-            PolygonEvent *polygonEvent = [[PolygonEvent alloc] initWithType:kInPolygon
-                                                                    polygon:polygon];
-            [self forwardEvent:polygonEvent];
-        }
-        else {
-            [self forwardEvent:[[Event alloc] initWithType:kHasCoverage]];
-        }
-    }
-    
-    /**
-    [GeoTrilateration trilaterate:transmissions
-                          success:^(Location *location) {
-                              if (location) {
-                                  NSSet *polygons = [[PolygonManager shared] allPolygons];
-
-                                  for (Polygon *polygon in polygons) {
-                                      if ([polygon contains:location]) {
-                                          [self forwardEvent:[[PolygonEvent alloc] initWithType:kInPolygon
-                                                                                        polygon:polygon]];
-                                          return;
-                                      }
-                                  }
-                              }
+                                   for (Polygon *polygon in polygons) {
+                                       if ([polygon contains:location]) {
+                                           [self forwardEvent:[[PolygonEvent alloc] initWithType:kEnterPolygon
+                                                                                         polygon:polygon]];
+                                           return;
+                                       }
+                                   }
+                               }
                               
-                              [self forwardEvent:[[Event alloc] initWithType:kHasCoverage]];
-                          }
-                          failure:^(NSError *error) {
-                              if (!transmissions || [transmissions count] == 0) {
-                                  [self forwardEvent:[[Event alloc] initWithType:kNoCoverage]];
-                              }
-                              else {
-                                  [self forwardEvent:[[Event alloc] initWithType:kHasCoverage]];
-                              }
-                          }
-     ];
-     **/
+                               if (_lastEvent && _lastEvent.type == kEnterPolygon) {
+                                   PolygonEvent *polygonEvent = (PolygonEvent *)_lastEvent;
+                                   [self forwardEvent:[[PolygonEvent alloc] initWithType:kExitPolygon
+                                                                                 polygon:polygonEvent.polygon]];
+                               }
+                               else {
+                                   [self forwardEvent:[[Event alloc] initWithType:kUnknown]];
+                               }
+                           }
+                           failure:^(NSError *error) {
+                               [self forwardEvent:[[Event alloc] initWithType:kUnknown]];
+                           }
+         ];
+    }
 }
 
 - (void)forwardEvent:(Event *)event
 {
     if (!_lastEvent || ![_lastEvent isEqualToEvent:event]) {
         _lastEvent = event;
-        
+
         for (id<EventManagerDelegate> delegete in _delegates) {
             if (delegete && [delegete respondsToSelector:@selector(onEvent:)]) {
                 [delegete onEvent:event];
@@ -161,12 +143,15 @@
     NSMutableArray *transmissions = [[NSMutableArray alloc] init];
     
     for (CLBeacon *beacon in beacons) {
-        [transmissions addObject:[[Transmission alloc] initWithCLBeacon:beacon]];
+        Transmission *transmission = [Transmission transmissionWithCLBeacon:beacon];
+        
+        if (transmission) {
+            [transmissions addObject:transmission];
+        }
     }
-    
-//  NSLog(@"Ranging: %@", transmissions);
-    
-    [self performExecution:YES transmissions:transmissions];
+        
+    [self performExecution:YES
+             transmissions:transmissions];
 
     for (id<EventManagerDelegate> delegete in _delegates) {
         if (delegete && [delegete respondsToSelector:@selector(onTransmissions:)]) {

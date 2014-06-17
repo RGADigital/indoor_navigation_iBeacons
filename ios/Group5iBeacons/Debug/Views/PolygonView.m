@@ -9,6 +9,7 @@
 #import "PolygonView.h"
 
 #import "Global.h"
+#import "UIView+Additions.h"
 
 @implementation PolygonView
 
@@ -17,6 +18,7 @@
                     scaleFactor:(CGFloat)scaleFactor
 {
     PolygonView *polygonView = [[PolygonView alloc] initWithFrame:plotFrame];
+    polygonView.clipsToBounds = NO;
     polygonView.backgroundColor = [UIColor clearColor];
     polygonView.polygon = polygon;
     polygonView.scaleFactor = scaleFactor;
@@ -28,11 +30,10 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextSetLineWidth(context, 2.0);
 
-    CGContextSetRGBFillColor(context, 100./255., 100./255., 100./255., 0.2);
-//    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1.0);
+    CGContextSetRGBFillColor(context, 255./255., 255./255., 255./255., 0.2);
 
     for (int idx = 0; idx < [self.polygon.locations count]; idx++) {
         Location *location = [self.polygon.locations objectAtIndex:idx];
@@ -40,12 +41,12 @@
         if (idx == 0) {
             CGContextMoveToPoint(context,
                                  location.x * self.scaleFactor,
-                                 location.y * self.scaleFactor);
+                                 self.height - location.y * self.scaleFactor);
         }
         else {
             CGContextAddLineToPoint(context,
                                     location.x * self.scaleFactor,
-                                    location.y * self.scaleFactor);
+                                    self.height - location.y * self.scaleFactor);
         }
     }
     
@@ -56,8 +57,8 @@
     NSMutableParagraphStyle* paragraphStyle = [NSMutableParagraphStyle new];
     paragraphStyle.alignment = NSTextAlignmentCenter;
 
-    NSDictionary *attributes = @{ NSFontAttributeName: kDefaultFont,
-                                  NSForegroundColorAttributeName: [UIColor redColor],
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold" size:17],
+                                  NSForegroundColorAttributeName: [UIColor whiteColor],
                                   NSParagraphStyleAttributeName: paragraphStyle };
     
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:self.polygon.name
@@ -65,7 +66,7 @@
     
     CGRect boundingBox = [self.polygon boundingBox];
     CGRect scaledBoundingBox = CGRectMake(boundingBox.origin.x * self.scaleFactor,
-                                          boundingBox.origin.y * self.scaleFactor,
+                                          self.height - (boundingBox.origin.y + boundingBox.size.height) * self.scaleFactor,
                                           boundingBox.size.width * self.scaleFactor,
                                           boundingBox.size.height * self.scaleFactor);
     

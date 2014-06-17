@@ -19,7 +19,7 @@
 @property (strong, nonatomic) Location *location;
 
 - (instancetype)initWithMajor:(NSUInteger)major
-                        minor:(CGFloat)minor
+                        minor:(NSUInteger)minor
                      location:(Location *)location;
 
 - (BOOL)isEqualToBeacon:(Beacon *)beacon;

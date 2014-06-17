@@ -2,7 +2,7 @@
 //  Location.m
 //  iBeacon-Geo-Demo
 //
-//  Created by admin on 3/26/14.
+//  Created by Nemanja Joksovic on 3/26/14.
 //  Copyright (c) 2014 R/GA. All rights reserved.
 //
 

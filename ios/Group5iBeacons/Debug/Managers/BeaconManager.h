@@ -18,6 +18,6 @@
 + (Beacon *)findBeaconByMajor:(NSUInteger)major
                      andMinor:(NSUInteger)minor;
 
-+ (Beacon *)cast:(CLBeacon *)beacon;
++ (Beacon *)findBeaconByCLBeacon:(CLBeacon *)beacon;
 
 @end

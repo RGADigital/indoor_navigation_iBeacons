@@ -11,10 +11,9 @@
 #import "Polygon.h"
 
 typedef enum {
-    kHasCoverage,
-    kNoCoverage,
-    kInPolygon,
-    kCalculating
+    kEnterPolygon,
+    kExitPolygon,
+    kUnknown
 } EventType;
 
 @interface Event : NSObject
