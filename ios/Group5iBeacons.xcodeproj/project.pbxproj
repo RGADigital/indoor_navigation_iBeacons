@@ -1893,7 +1893,7 @@
 				ORGANIZATIONNAME = "John Tubert";
 				TargetAttributes = {
 					1D49AD9618CA380600EBF21A = {
-						DevelopmentTeam = 5U69V73RKG;
+						DevelopmentTeam = V2T3S29RQ2;
 					};
 					1D49ADB718CA380600EBF21A = {
 						TestTargetID = 1D49AD9618CA380600EBF21A;
