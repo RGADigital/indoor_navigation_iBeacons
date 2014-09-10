@@ -30,17 +30,17 @@
     else if (major == 5 && minor == 2) {
         return [[Beacon alloc] initWithMajor:major
                                        minor:minor
-                                    location:[[Location alloc] initWithX:6 y:0 z:0]];
+                                    location:[[Location alloc] initWithX:4 y:0 z:0]];
     }
     else if (major == 5 && minor == 3) {
         return [[Beacon alloc] initWithMajor:major
                                        minor:minor
-                                    location:[[Location alloc] initWithX:1.5 y:6 z:0]];
+                                    location:[[Location alloc] initWithX:4 y:4 z:0]];
     }
     else if (major == 5 && minor == 4) {
         return [[Beacon alloc] initWithMajor:major
                                        minor:minor
-                                    location:[[Location alloc] initWithX:4.5 y:6 z:0]];
+                                    location:[[Location alloc] initWithX:0 y:4 z:0]];
     }
     else {
         return nil;

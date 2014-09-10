@@ -115,11 +115,11 @@
 - (void)setupTestData
 {
     Polygon *stagePolygon = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:0]
-                                               name:@"Stage"
-                                          locations:@[[[Location alloc] initWithX:1.5 y:4 z:0.],
-                                                      [[Location alloc] initWithX:1.5 y:6.0 z:0.],
-                                                      [[Location alloc] initWithX:4.5 y:6.0 z:0.],
-                                                      [[Location alloc] initWithX:4.5 y:4 z:0.]]];
+                                               name:@"Test Area"
+                                          locations:@[[[Location alloc] initWithX:1 y:4. z:0.],
+                                                      [[Location alloc] initWithX:1 y:3. z:0.],
+                                                      [[Location alloc] initWithX:3 y:3. z:0.],
+                                                      [[Location alloc] initWithX:3 y:4. z:0.]]];
     [[PolygonManager shared] addPolygon:stagePolygon];
 }
 
