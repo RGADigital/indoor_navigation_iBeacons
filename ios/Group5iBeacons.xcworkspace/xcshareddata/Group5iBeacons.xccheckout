@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D3DF0819-9D66-42B5-903F-E69966D9F469</string>
+	<string>06BF8991-68A3-48D1-B4A3-82F71EE64CE7</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Group5iBeacons</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>D2420409-133A-45AC-8C31-33A02EBAAE9A</key>
+		<key>F38AA235-95E2-47EF-B5B1-E1FEB40FC7A2</key>
 		<string>https://github.com/jtubert/Group5_iBeacons.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ios/Group5iBeacons.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>D2420409-133A-45AC-8C31-33A02EBAAE9A</key>
+		<key>F38AA235-95E2-47EF-B5B1-E1FEB40FC7A2</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D2420409-133A-45AC-8C31-33A02EBAAE9A</string>
+	<string>F38AA235-95E2-47EF-B5B1-E1FEB40FC7A2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D2420409-133A-45AC-8C31-33A02EBAAE9A</string>
+			<string>F38AA235-95E2-47EF-B5B1-E1FEB40FC7A2</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Group5_iBeacons</string>
 		</dict>
