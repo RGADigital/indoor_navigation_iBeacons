@@ -116,10 +116,10 @@
 {
     Polygon *stagePolygon = [[Polygon alloc] initWithId:[NSNumber numberWithInteger:0]
                                                name:@"Test Area"
-                                          locations:@[[[Location alloc] initWithX:1 y:2.5 z:0.],
-                                                      [[Location alloc] initWithX:1 y:3.5 z:0.],
-                                                      [[Location alloc] initWithX:2.5 y:3.5 z:0.],
-                                                      [[Location alloc] initWithX:2.5 y:2.5 z:0.]]];
+                                          locations:@[[[Location alloc] initWithX:1 y:4 z:0.],
+                                                      [[Location alloc] initWithX:1 y:5 z:0.],
+                                                      [[Location alloc] initWithX:4 y:5 z:0.],
+                                                      [[Location alloc] initWithX:4 y:4 z:0.]]];
     [[PolygonManager shared] addPolygon:stagePolygon];
 }
 
