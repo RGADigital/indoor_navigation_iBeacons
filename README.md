@@ -1,4 +1,4 @@
-Group5_iBeacons
+indoor_navigation_iBeacons
 ===============
 
-Group5_iBeacons
+indoor_navigation_iBeacons
